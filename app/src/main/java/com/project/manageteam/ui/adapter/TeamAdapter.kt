@@ -1,13 +1,15 @@
 package com.project.manageteam.ui.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
+import com.google.android.material.imageview.ShapeableImageView
 import com.project.manageteam.R
-import com.project.manageteam.databinding.TeamRecylerviewItemBinding
 import com.project.manageteam.model.Team
 
 class TeamAdapter(
@@ -15,10 +17,12 @@ class TeamAdapter(
     private val teamClick: TeamClick,
 ) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
     
-    private val allTeams = ArrayList<Team>()
+    val allTeams = ArrayList<Team>()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        lateinit var binding: TeamRecylerviewItemBinding
+        val idTeamName = itemView.findViewById<TextView>(R.id.idTeamName)
+        val idSport = itemView.findViewById<TextView>(R.id.idSport)
+        val idButtonDelete = itemView.findViewById<ShapeableImageView>(R.id.idButtonDelete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,16 +33,23 @@ class TeamAdapter(
     override fun getItemCount(): Int = allTeams.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.idTeamName.text = allTeams[position].teamTitle
-        holder.binding.idSport.text = allTeams[position].teamSport
+        holder.idTeamName.text = allTeams[position].teamTitle
+        holder.idSport.text = allTeams[position].teamSport
 
-        holder.binding.idButtonDelete.setOnClickListener {
+        holder.idButtonDelete.setOnClickListener {
             teamClick.teamDeleteClick(allTeams[position])
         }
 
         holder.itemView.setOnClickListener {
             teamClick.teamAddClick(allTeams[position])
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateList(newList: List<Team>) {
+        allTeams.clear()
+        allTeams.addAll(newList)
+        notifyDataSetChanged()
     }
 
 }

@@ -13,18 +13,16 @@ import com.project.manageteam.room.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TeamViewModel : ViewModel() {
+class TeamViewModel(application: Application) : AndroidViewModel(application) {
 
     private val context = MutableLiveData<Context>()
-    lateinit var repository: TeamRepository
-    lateinit var allTeams: LiveData<List<Team>>
+    private var repository: TeamRepository
+    var allTeams: LiveData<List<Team>>
 
     init {
-        context.observeForever {
-            val dao = AppDatabase.getDatabase(it).getTeamsDao()
-            repository = TeamRepository(dao)
-            allTeams = repository.allTeams
-        }
+        val dao = AppDatabase.getDatabase(application).getTeamsDao()
+        repository = TeamRepository(dao)
+        allTeams = repository.allTeams
     }
 
     fun addTeam(team: Team) = viewModelScope.launch(Dispatchers.IO) {

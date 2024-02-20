@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.project.manageteam"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.project.manageteam"
@@ -54,7 +54,7 @@ dependencies {
 
     // room
     implementation("androidx.room:room-ktx:2.6.1")
-    ksp("androidx.room:room-compiler:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
     androidTestImplementation("androidx.room:room-testing:2.6.1")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0-RC2")

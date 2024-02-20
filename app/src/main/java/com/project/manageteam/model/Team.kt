@@ -5,8 +5,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "teams")
-data class Team(
-    @PrimaryKey(autoGenerate = true) var id: Int = 0,
+class Team(
     @ColumnInfo(name = "title") val teamTitle: String,
     @ColumnInfo(name = "sport") val teamSport: String
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}

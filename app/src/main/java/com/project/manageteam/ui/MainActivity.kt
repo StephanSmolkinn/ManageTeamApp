@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.project.manageteam.R
 import com.project.manageteam.databinding.ActivityMainBinding
+import com.project.manageteam.ui.fragment.TeamFragment
+import com.project.manageteam.utils.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
