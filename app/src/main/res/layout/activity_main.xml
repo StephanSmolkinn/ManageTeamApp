@@ -9,7 +9,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/containerTeams"
-        android:name="com.project.manageteam.ui.fragment.TeamFragment"
+        android:name="com.project.manageteam.ui.fragment.create_select_team.TeamFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

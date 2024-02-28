@@ -1,22 +1,24 @@
-package com.project.manageteam.ui.fragment
+package com.project.manageteam.ui.fragment.create_select_team
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.project.manageteam.databinding.FragmentAddOrEditTeamBinding
+import com.project.manageteam.R
+import com.project.manageteam.databinding.FragmentAddTeamBinding
 import com.project.manageteam.model.Team
-import com.project.manageteam.ui.MainActivity
+import com.project.manageteam.utils.transaction
 import com.project.manageteam.viewmodel.TeamViewModel
+import com.project.manageteam.viewmodel.TeamViewModelFactory
 
-class AddOrEditTeamFragment : Fragment() {
+class AddTeamFragment : Fragment() {
 
-    lateinit var binding: FragmentAddOrEditTeamBinding
-    lateinit var viewModel: TeamViewModel
+    private lateinit var binding: FragmentAddTeamBinding
+    private lateinit var viewModel: TeamViewModel
     private var teamId = -1
 
     override fun onCreateView(
@@ -24,7 +26,7 @@ class AddOrEditTeamFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAddOrEditTeamBinding.inflate(layoutInflater, container, false)
+        binding = FragmentAddTeamBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -33,21 +35,12 @@ class AddOrEditTeamFragment : Fragment() {
 
         viewModel = ViewModelProvider(
             owner = requireActivity(),
-            factory = ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+            factory = TeamViewModelFactory(requireActivity().application)
         )[TeamViewModel::class.java]
 
         val teamType = requireActivity().intent.getStringExtra("teamType")
-        if (teamType.equals("Edit")) {
-            val teamName = requireActivity().intent.getStringExtra("teamName")
-            val teamSport = requireActivity().intent.getStringExtra("teamSport")
-            teamId = requireActivity().intent.getIntExtra("teamId", -1)
 
-            binding.idButtonAddTeam.text = "Update Team"
-            binding.idEditTeamName.setText(teamName)
-            binding.idEditTeamSport.setText(teamSport)
-        } else {
-            binding.idButtonAddTeam.text = "Add Team"
-        }
+        binding.idButtonAddTeam.text = "Add Team"
 
         binding.idButtonAddTeam.setOnClickListener {
             val teamName = binding.idEditTeamName.text.toString()
@@ -67,7 +60,7 @@ class AddOrEditTeamFragment : Fragment() {
                     Toast.makeText(requireContext(), "Team created", Toast.LENGTH_LONG).show()
                 }
             }
-            startActivity(Intent(requireContext(), MainActivity::class.java))
+            transaction(R.id.containerTeams, TeamFragment(), activity as AppCompatActivity)
         }
     }
 

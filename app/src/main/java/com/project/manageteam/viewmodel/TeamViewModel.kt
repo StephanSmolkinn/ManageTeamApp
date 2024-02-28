@@ -13,9 +13,8 @@ import com.project.manageteam.room.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TeamViewModel(application: Application) : AndroidViewModel(application) {
+class TeamViewModel(application: Application) : ViewModel() {
 
-    private val context = MutableLiveData<Context>()
     private var repository: TeamRepository
     var allTeams: LiveData<List<Team>>
 

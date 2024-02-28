@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.project.manageteam.model.Team
 import javax.net.ssl.SSLSessionContext
 
-@Database(entities = arrayOf(Team::class), version = 1, exportSchema = false)
+@Database(entities = [Team::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun getTeamsDao(): TeamsDao
 

@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ManageTeam"
         tools:targetApi="31">
+        <activity android:name=".ui.HomeTeamActivity"> </activity>
         <activity android:name=".ui.AddOrEditTeamActivity"> </activity>
         <activity
             android:name=".ui.MainActivity"

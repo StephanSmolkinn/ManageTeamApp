@@ -1,4 +1,4 @@
-package com.project.manageteam.ui.fragment
+package com.project.manageteam.ui.fragment.create_select_team
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,18 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.project.manageteam.R
 import com.project.manageteam.databinding.FragmentTeamBinding
 import com.project.manageteam.model.Team
-import com.project.manageteam.ui.AddOrEditTeamActivity
+import com.project.manageteam.ui.HomeTeamActivity
 import com.project.manageteam.ui.adapter.TeamAdapter
 import com.project.manageteam.ui.adapter.TeamClick
 import com.project.manageteam.utils.transaction
 import com.project.manageteam.viewmodel.TeamViewModel
+import com.project.manageteam.viewmodel.TeamViewModelFactory
 
 class TeamFragment : Fragment(), TeamClick {
 
@@ -36,13 +39,14 @@ class TeamFragment : Fragment(), TeamClick {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         teamRV = binding.recycleViewTeam
         teamRV.layoutManager = LinearLayoutManager(requireContext())
         val teamRVAdapter = TeamAdapter(requireContext(), this)
         teamRV.adapter = teamRVAdapter
         viewModel = ViewModelProvider(
             owner = requireActivity(),
-            factory = ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+            factory = TeamViewModelFactory(requireActivity().application)
         )[TeamViewModel::class.java]
 
         viewModel.allTeams.observe(viewLifecycleOwner, Observer {
@@ -52,20 +56,17 @@ class TeamFragment : Fragment(), TeamClick {
         })
 
         binding.FABAddTeam.setOnClickListener {
-            val intent = Intent(requireContext(), AddOrEditTeamActivity::class.java)
-            startActivity(intent)
+            transaction(R.id.containerTeams, AddTeamFragment(), activity as AppCompatActivity)
         }
-
     }
 
     override fun teamAddClick(team: Team) {
-        val intent = Intent(requireContext(), AddOrEditTeamActivity::class.java)
+        val intent = Intent(requireContext(), HomeTeamActivity::class.java)
         intent.putExtra("teamType", "Edit")
         intent.putExtra("teamName", team.teamTitle)
         intent.putExtra("teamSport", team.teamSport)
         intent.putExtra("teamId", team.id)
         startActivity(intent)
-        requireActivity().finish()
     }
 
     override fun teamDeleteClick(team: Team) {
