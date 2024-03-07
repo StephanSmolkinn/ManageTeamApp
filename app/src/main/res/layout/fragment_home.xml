@@ -1,33 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white" >
+    android:background="@color/white">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/idTeamName"
+    <LinearLayout
+        android:id="@+id/linearLayoutTitleTeam"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/blue"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/idTeamSportName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:layout_marginStart="56dp"
+                android:text="name | sport"
+                android:textSize="26sp"
+                android:textColor="@color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/idAddPlayer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="56dp"
+                android:backgroundTint="@color/white"
+                android:text="Add player"
+                android:textSize="16sp"
+                android:textColor="@color/blue" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleViewPlayers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="name"
-        android:textSize="24sp"
-        android:textColor="@color/blue"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutTitleTeam"
+        tools:listitem="@layout/player_recyclerview_item" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/idTeamSport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="sport"
-        android:textSize="20sp"
-        android:textColor="@color/blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/idTeamName" />
-
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

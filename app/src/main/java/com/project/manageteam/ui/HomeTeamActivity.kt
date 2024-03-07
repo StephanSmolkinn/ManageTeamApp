@@ -27,8 +27,8 @@ class HomeTeamActivity : AppCompatActivity() {
 
         adapter = FragmentPageAdapter(supportFragmentManager, lifecycle)
 
-        binding.idTabLayoutHomeTeam.addTab(binding.idTabLayoutHomeTeam.newTab().setText("Home"))
-        binding.idTabLayoutHomeTeam.addTab(binding.idTabLayoutHomeTeam.newTab().setText("Players"))
+        binding.idTabLayoutHomeTeam.addTab(binding.idTabLayoutHomeTeam.newTab().setText(" Home "))
+        binding.idTabLayoutHomeTeam.addTab(binding.idTabLayoutHomeTeam.newTab().setText(" Team "))
 
         binding.idViewPager.adapter = adapter
 

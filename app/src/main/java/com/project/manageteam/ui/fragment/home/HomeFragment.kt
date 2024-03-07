@@ -28,8 +28,8 @@ class HomeFragment : Fragment() {
         val teamSport = requireActivity().intent.getStringExtra("teamSport")
         teamId = requireActivity().intent.getIntExtra("teamId", -1)
 
-        binding.idTeamName.text = teamName
-        binding.idTeamSport.text = teamSport
+        binding.idTeamSportName.text = teamId.toString()
+
     }
 
 }

@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
     tools:context=".ui.HomeTeamActivity"
     xmlns:tools="http://schemas.android.com/tools" >
 
@@ -11,6 +10,7 @@
         android:id="@+id/idTabLayoutHomeTeam"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:background="@color/purple_200"
         app:tabMode="fixed"
         app:tabIndicatorGravity="stretch"
         app:tabIndicatorAnimationMode="elastic"
@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription=" " />
+        android:contentDescription="          " />
     
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/idViewPager"

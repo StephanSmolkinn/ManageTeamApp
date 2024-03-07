@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.project.manageteam.model.Player
 import com.project.manageteam.model.Team
 import javax.net.ssl.SSLSessionContext
 
-@Database(entities = [Team::class], version = 1, exportSchema = false)
+@Database(entities = [Team::class, Player::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun getTeamsDao(): TeamsDao
+
+    abstract fun getPlayersDao(): PlayersDao
 
     companion object {
 
