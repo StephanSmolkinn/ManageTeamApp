@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/linearLayoutTitleTeam"
@@ -16,16 +15,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@color/blue"
+            android:background="@color/purple_200"
             android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/idTeamSportName"
+                android:id="@+id/idTeamName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
                 android:layout_marginStart="56dp"
-                android:text="name | sport"
+                android:text="Team name"
                 android:textSize="26sp"
                 android:textColor="@color/white" />
 
@@ -35,10 +34,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginStart="56dp"
-                android:backgroundTint="@color/white"
                 android:text="Add player"
                 android:textSize="16sp"
-                android:textColor="@color/blue" />
+                android:textColor="@color/purple_200" />
 
         </LinearLayout>
 
@@ -46,7 +44,6 @@
         android:id="@+id/recycleViewPlayers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

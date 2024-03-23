@@ -17,7 +17,7 @@ class TeamAdapter(
     private val teamClick: TeamClick,
 ) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
     
-    val allTeams = ArrayList<Team>()
+    private val allTeams = ArrayList<Team>()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val idTeamName = itemView.findViewById<TextView>(R.id.idTeamName)

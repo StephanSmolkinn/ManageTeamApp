@@ -1,6 +1,5 @@
 package com.project.manageteam.ui.fragment.create_select_team
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.project.manageteam.R
 import com.project.manageteam.databinding.FragmentTeamBinding
 import com.project.manageteam.model.Team
-import com.project.manageteam.ui.HomeTeamActivity
 import com.project.manageteam.ui.adapter.TeamAdapter
 import com.project.manageteam.ui.adapter.TeamClick
+import com.project.manageteam.ui.fragment.home.HomeTeamFragment
 import com.project.manageteam.utils.transaction
 import com.project.manageteam.viewmodel.TeamViewModel
 import com.project.manageteam.viewmodel.TeamViewModelFactory
@@ -44,6 +43,7 @@ class TeamFragment : Fragment(), TeamClick {
         teamRV.layoutManager = LinearLayoutManager(requireContext())
         val teamRVAdapter = TeamAdapter(requireContext(), this)
         teamRV.adapter = teamRVAdapter
+
         viewModel = ViewModelProvider(
             owner = requireActivity(),
             factory = TeamViewModelFactory(requireActivity().application)
@@ -56,17 +56,17 @@ class TeamFragment : Fragment(), TeamClick {
         })
 
         binding.FABAddTeam.setOnClickListener {
-            transaction(R.id.containerTeams, AddTeamFragment(), activity as AppCompatActivity)
+            transaction(R.id.containerTeams, AddTeamFragment(), activity as AppCompatActivity, null)
         }
     }
 
     override fun teamAddClick(team: Team) {
-        val intent = Intent(requireContext(), HomeTeamActivity::class.java)
-        intent.putExtra("teamType", "Edit")
-        intent.putExtra("teamName", team.teamTitle)
-        intent.putExtra("teamSport", team.teamSport)
-        intent.putExtra("teamId", team.id)
-        startActivity(intent)
+        val argumentsForTeam = Bundle()
+        argumentsForTeam.putString("teamType", "Edit")
+        argumentsForTeam.putString("teamName", team.teamTitle)
+        argumentsForTeam.putString("teamSport", team.teamSport)
+        argumentsForTeam.putInt("teamId", team.id)
+        transaction(R.id.containerTeams, HomeTeamFragment(), activity as AppCompatActivity, argumentsForTeam)
     }
 
     override fun teamDeleteClick(team: Team) {

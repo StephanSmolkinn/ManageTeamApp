@@ -60,7 +60,7 @@ class AddTeamFragment : Fragment() {
                     Toast.makeText(requireContext(), "Team created", Toast.LENGTH_LONG).show()
                 }
             }
-            transaction(R.id.containerTeams, TeamFragment(), activity as AppCompatActivity)
+            transaction(R.id.containerTeams, TeamFragment(), activity as AppCompatActivity, null)
         }
     }
 
