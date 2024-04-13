@@ -1,10 +1,11 @@
-package com.project.manageteam.ui.fragment.home
+package com.project.manageteam.ui.adapter
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.project.manageteam.ui.fragment.home.HomeFragment
+import com.project.manageteam.ui.fragment.home.HomePlayersFragment
 
 class FragmentPageAdapter (
     fragmentManager: FragmentManager,

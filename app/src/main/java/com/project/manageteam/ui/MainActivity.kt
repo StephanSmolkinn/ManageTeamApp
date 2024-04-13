@@ -17,13 +17,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val callback = OnBackPressedDispatcher()
-        callback.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                transaction(R.id.containerTeams, TeamFragment(), this@MainActivity, null)
-            }
-        })
     }
 
 }

@@ -28,7 +28,7 @@ class PlayerAdapter(val context: Context) : RecyclerView.Adapter<PlayerAdapter.V
     override fun getItemCount(): Int = allPlayers.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        
+
     }
 
 }

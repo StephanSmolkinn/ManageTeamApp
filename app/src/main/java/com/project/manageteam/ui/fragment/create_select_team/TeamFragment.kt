@@ -17,6 +17,7 @@ import com.project.manageteam.model.Team
 import com.project.manageteam.ui.adapter.TeamAdapter
 import com.project.manageteam.ui.adapter.TeamClick
 import com.project.manageteam.ui.fragment.home.HomeTeamFragment
+import com.project.manageteam.utils.constants.Constants
 import com.project.manageteam.utils.transaction
 import com.project.manageteam.viewmodel.TeamViewModel
 import com.project.manageteam.viewmodel.TeamViewModelFactory
@@ -60,12 +61,9 @@ class TeamFragment : Fragment(), TeamClick {
         }
     }
 
-    override fun teamAddClick(team: Team) {
+    override fun teamClick(team: Team) {
         val argumentsForTeam = Bundle()
-        argumentsForTeam.putString("teamType", "Edit")
-        argumentsForTeam.putString("teamName", team.teamTitle)
-        argumentsForTeam.putString("teamSport", team.teamSport)
-        argumentsForTeam.putInt("teamId", team.id)
+        argumentsForTeam.putParcelable(Constants.TEAM, team)
         transaction(R.id.containerTeams, HomeTeamFragment(), activity as AppCompatActivity, argumentsForTeam)
     }
 

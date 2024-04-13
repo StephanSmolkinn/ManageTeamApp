@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.project.manageteam.R
 import com.project.manageteam.databinding.FragmentAddTeamBinding
 import com.project.manageteam.model.Team
+import com.project.manageteam.utils.setupOnBackPressed
 import com.project.manageteam.utils.transaction
 import com.project.manageteam.viewmodel.TeamViewModel
 import com.project.manageteam.viewmodel.TeamViewModelFactory
@@ -26,6 +27,7 @@ class AddTeamFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        setupOnBackPressed(activity as AppCompatActivity)
         binding = FragmentAddTeamBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
